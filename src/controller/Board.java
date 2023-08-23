@@ -39,6 +39,8 @@ public class Board {
 		for (Light[] lightRow : lights)
 			board.append(rowToString(lightRow));
 		board.append(getDashLine());
+		board.append("tries: ").append(tries).append("\n");
+		board.append(getDashLine());
 		return board.toString();
 	}
 
