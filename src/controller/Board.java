@@ -7,14 +7,10 @@ public class Board {
 
 	Board(int size) {
 		lights = new Light[size][size];
-		initializeBoard();
-	}
-
-	private void initializeBoard() {
 		Random random = new Random();
-		for (Light[] lightArray : lights) {
-			for (Light light : lightArray) {
-				light = new Light(random.nextBoolean());
+		for (int i = 0; i < lights.length; i++) {
+			for (int j = 0; j < lights.length; j++) {
+				lights[i][j] = new Light(random.nextBoolean());
 			}
 		}
 	}
@@ -30,13 +26,15 @@ public class Board {
 			lights[row + 1][col].hitSwitch();
 			lights[row][col - 1].hitSwitch();
 			lights[row][col + 1].hitSwitch();
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (Exception e) {
+
 		}
+
 	}
 
-	private String printRow(Light[] row) {
+	private String rowToString(Light[] lightRow) {
 		StringBuilder stringBuilder = new StringBuilder("- ");
-		for (Light light : row) {
+		for (Light light : lightRow) {
 			if (light.getState()) {
 				stringBuilder.append(1).append(" ");
 			} else {
@@ -47,13 +45,23 @@ public class Board {
 		return stringBuilder.toString();
 	}
 
-	public String toString() {
-		StringBuilder stringBuilder = new StringBuilder("-------------\n");
-		for (int i = 0; i < lights.length; i++) {
-			stringBuilder.append(printRow(lights[i]));
+	private String getDashLine() {
+		StringBuilder dashLine = new StringBuilder("---");
+		for (int i = 0; i < lights.length * 2; i++) {
+			dashLine.append("-");
 		}
-		stringBuilder.append("-------------\n");
-		return stringBuilder.toString();
+		dashLine.append("\n");
+		return dashLine.toString();
+	}
+
+	public String toString() {
+		StringBuilder board = new StringBuilder();
+		board.append(getDashLine());
+		for (Light[] lightRow : lights) {
+			board.append(rowToString(lightRow));
+		}
+		board.append(getDashLine());
+		return board.toString();
 	}
 
 }
