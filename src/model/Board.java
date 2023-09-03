@@ -2,35 +2,23 @@ package model;
 
 import java.util.Random;
 
-public class Board {
-	private Light[][] lights;
-	private int tries;
+public abstract class Board {
+	protected Light[][] lights;
+	protected int tries;
+	protected int size;
 
-	Board(int size) {
+	public Board(int size) {
+		this.size = size;
 		lights = new Light[size][size];
 		tries = 0;
+		initializeBoard();
+	}
+
+	private void initializeBoard() {
 		Random random = new Random();
 		for (int i = 0; i < lights.length; i++)
 			for (int j = 0; j < lights.length; j++)
 				lights[i][j] = new Light(random.nextBoolean());
-	}
-
-	public void switchLightValue(int row, int col) {
-		if (validPosition(row, col)) {
-			getLight(row, col).hitSwitch();
-			if (col - 1 >= 0)
-				getLightLeft(row, col).hitSwitch();
-			if (col + 1 < lights.length)
-				getLightRight(row, col).hitSwitch();
-			if (row - 1 >= 0)
-				getLightUp(row, col).hitSwitch();
-			if (row + 1 < lights.length)
-				getLightDown(row, col).hitSwitch();
-			tries++;
-		} else {
-			System.out.println(":( Thats not a valid position. Try again!");
-		}
-
 	}
 
 	public String toString() {
@@ -42,38 +30,6 @@ public class Board {
 		board.append("tries: ").append(tries).append("\n");
 		board.append(getDashLine());
 		return board.toString();
-	}
-
-	public boolean isCompleted() {
-		for (Light[] lightRow : lights)
-			for (Light light : lightRow)
-				if (light.getState())
-					return false;
-		return true;
-	}
-
-	private boolean validPosition(int row, int col) {
-		return row >= 0 && row < lights.length && col >= 0 && col < lights.length;
-	}
-
-	private Light getLight(int row, int col) {
-		return lights[row][col];
-	}
-
-	private Light getLightLeft(int row, int col) {
-		return lights[row][col - 1];
-	}
-
-	private Light getLightRight(int row, int col) {
-		return lights[row][col + 1];
-	}
-
-	private Light getLightUp(int row, int col) {
-		return lights[row - 1][col];
-	}
-
-	private Light getLightDown(int row, int col) {
-		return lights[row + 1][col];
 	}
 
 	private String rowToString(Light[] lightRow) {
@@ -96,5 +52,31 @@ public class Board {
 		dashLine.append("\n");
 		return dashLine.toString();
 	}
+
+	public int getTries() {
+		return tries;
+	}
+
+	public boolean isCompleted() {
+		for (Light[] lightRow : lights)
+			for (Light light : lightRow)
+				if (light.getState())
+					return false;
+		return true;
+	}
+
+	public int getSize() {
+		return size;
+	}
+
+	public Light[][] getLights() {
+		return lights;
+	}
+
+	public Light getLight(int row, int col) {
+		return lights[row][col];
+	}
+
+	public abstract void switchLightValue(int i, int j);
 
 }

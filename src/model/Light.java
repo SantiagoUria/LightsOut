@@ -8,12 +8,8 @@ public class Light {
 		this.isOn = isOn;
 	}
 
-	protected boolean getState() {
+	public boolean getState() {
 		return isOn;
-	}
-
-	protected void setState(boolean isOn) {
-		this.isOn = isOn;
 	}
 
 	protected void hitSwitch() {
