@@ -5,15 +5,13 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-public class Home extends JFrame {
+public class Home extends JFrame implements Utilities {
 
 	private JPanel panel;
 
@@ -45,7 +43,7 @@ public class Home extends JFrame {
 
 		playButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				playButtonActionPerformance();
+				showLevelSelectorScreen(panel);
 			}
 
 		});
@@ -56,29 +54,7 @@ public class Home extends JFrame {
 		welcomeLabel_1.setBounds(278, 104, 220, 77);
 		panel.add(welcomeLabel_1);
 
-		setBackground();
+		setBackground(panel);
 	}
 
-	private void setBackground() {
-		JLabel background;
-
-		background = new JLabel("",
-				new ImageIcon("C:\\Users\\Santi\\eclipse-workspace\\LightsOut2\\src\\view\\background.jpg"),
-				SwingConstants.TRAILING);
-		background.setVerticalAlignment(SwingConstants.BOTTOM);
-		background.setBounds(10, 11, 764, 539);
-		panel.add(background);
-
-	}
-
-	private void playButtonActionPerformance() {
-		LevelSelector selection = new LevelSelector();
-		selection.setSize(800, 600);
-		selection.setLocation(0, 0);
-		panel.removeAll();
-		panel.add(selection, CENTER_ALIGNMENT);
-		panel.revalidate();
-		panel.repaint();
-
-	}
 }

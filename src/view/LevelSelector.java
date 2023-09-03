@@ -4,13 +4,11 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 
-public class LevelSelector extends JPanel {
+public class LevelSelector extends JPanel implements Utilities {
 	private JPanel panel;
 
 	public LevelSelector() {
@@ -33,7 +31,7 @@ public class LevelSelector extends JPanel {
 		JButton btnLevelOne = new JButton("1");
 		btnLevelOne.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				startGame(3);
+				showGameModeSelectorScreen(panel, 3);
 			}
 		});
 		btnLevelOne.setBounds(239, 288, 70, 70);
@@ -42,7 +40,7 @@ public class LevelSelector extends JPanel {
 		JButton btnLevelTwo = new JButton("2");
 		btnLevelTwo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				startGame(4);
+				showGameModeSelectorScreen(panel, 4);
 			}
 		});
 		btnLevelTwo.setBounds(349, 288, 70, 70);
@@ -51,34 +49,14 @@ public class LevelSelector extends JPanel {
 		JButton btnLevelThree = new JButton("3");
 		btnLevelThree.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				startGame(5);
+				showGameModeSelectorScreen(panel, 5);
 			}
 		});
 		btnLevelThree.setBounds(461, 288, 70, 70);
 		panel.add(btnLevelThree);
-		setBackground();
+		setBackground(panel);
 	}
 
-	private void setBackground() {
-		JLabel background;
 
-		background = new JLabel("",
-				new ImageIcon("C:\\Users\\Santi\\eclipse-workspace\\LightsOut2\\src\\view\\background.jpg"),
-				SwingConstants.TRAILING);
-		background.setVerticalAlignment(SwingConstants.BOTTOM);
-		background.setBounds(10, 11, 764, 539);
-		panel.add(background);
-
-	}
-
-	public void startGame(int level) {
-		GameModeSelector gamemode = new GameModeSelector(level);
-		gamemode.setSize(800, 600);
-		gamemode.setLocation(0, 0);
-		panel.removeAll();
-		panel.add(gamemode, CENTER_ALIGNMENT);
-		panel.revalidate();
-		panel.repaint();
-	}
 
 }

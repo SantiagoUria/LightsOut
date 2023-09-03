@@ -8,7 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-public class Score extends JPanel {
+public class Score extends JPanel implements Utilities {
 	private JPanel panel;
 
 	public Score() {
@@ -287,20 +287,7 @@ public class Score extends JPanel {
 		playerScoreLabelTenSub.setBounds(399, 504, 390, 30);
 		panel.add(playerScoreLabelTenSub);
 
-		setBackground();
-
-	}
-
-	private void setBackground() {
-		JLabel background;
-
-		new ImageIcon("background.jpg");
-		background = new JLabel("",
-				new ImageIcon("C:\\Users\\Santi\\eclipse-workspace\\LightsOut2\\src\\view\\background.jpg"),
-				SwingConstants.TRAILING);
-		background.setVerticalAlignment(SwingConstants.BOTTOM);
-		background.setBounds(10, 11, 764, 539);
-		panel.add(background);
+		setBackground(panel);
 
 	}
 }

@@ -5,7 +5,6 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -14,7 +13,7 @@ import javax.swing.SwingConstants;
 import model.Board;
 import model.Light;
 
-public class Game extends JPanel {
+public class Game extends JPanel implements Utilities {
 	private JPanel panel;
 	private static Color _color_off = new Color(0, 0, 0);
 	private static Color _color_on = new Color(252, 232, 174);
@@ -89,21 +88,7 @@ public class Game extends JPanel {
 			}
 			_add_y(70);
 		}
-		setBackground();
-
-	}
-
-	private void setBackground() {
-		JLabel background;
-
-		new ImageIcon("background.jpg");
-		background = new JLabel("",
-				new ImageIcon("C:\\Users\\Santi\\eclipse-workspace\\LightsOut2\\src\\view\\background.jpg"),
-				SwingConstants.TRAILING);
-		background.setVerticalAlignment(SwingConstants.BOTTOM);
-		background.setBounds(10, 11, 764, 539);
-		panel.add(background);
-
+		setBackground(panel);
 	}
 
 	private void managePositions(int size) {
@@ -159,17 +144,7 @@ public class Game extends JPanel {
 			}
 		}
 		if (game.isCompleted()) {
-			playerWon();
+			showWinScreen(panel, tries);
 		}
-	}
-
-	public void playerWon() {
-		WinScreen winScreen = new WinScreen(tries);
-		panel.removeAll();
-		panel.add(winScreen, CENTER_ALIGNMENT);
-		winScreen.setSize(800, 600);
-		winScreen.setLocation(0, 0);
-		panel.revalidate();
-		panel.repaint();
 	}
 }

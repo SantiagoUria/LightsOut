@@ -4,23 +4,23 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-public class WinScreen extends JPanel {
+public class WinScreen extends JPanel implements Utilities {
 	private JTextField playerNameTextField;
 	private JPanel panel;
 	private int tries;
 
-	/**
-	 * Create the panel.
-	 */
-	public WinScreen(int tries) {
-		this.tries = tries;
+	public WinScreen(int _tries) {
+		tries = _tries;
+		initComponents();
+	}
+
+	private void initComponents() {
 		setLayout(null);
 		panel = new JPanel();
 		panel.setBounds(0, 0, 800, 600);
@@ -61,37 +61,14 @@ public class WinScreen extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// envia datos
-				scoreScreen();
+				showScoreScreen(panel);
 			}
 
 		});
 		panel.add(sendScoreButton);
 
-		setBackground();
+		setBackground(panel);
 
 	}
 
-	private void setBackground() {
-		JLabel background;
-
-		new ImageIcon("background.jpg");
-		background = new JLabel("",
-				new ImageIcon("C:\\Users\\Santi\\eclipse-workspace\\LightsOut2\\src\\view\\background.jpg"),
-				SwingConstants.TRAILING);
-		background.setVerticalAlignment(SwingConstants.BOTTOM);
-		background.setBounds(10, 11, 764, 539);
-		panel.add(background);
-
-	}
-
-	public void scoreScreen() {
-		Score score = new Score();
-		panel.removeAll();
-		panel.add(score, CENTER_ALIGNMENT);
-		score.setSize(800, 600);
-		score.setLocation(0, 0);
-		panel.revalidate();
-		panel.repaint();
-
-	}
 }
