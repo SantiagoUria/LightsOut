@@ -51,6 +51,7 @@ public class Board {
 
 	public void switchLightValue(int row, int col) {
 		if (validPosition(row, col)) {
+			tries++;
 			getLight(row, col).hitSwitch();
 			if (gameMode == CLASSIC_MODE) {
 				classicHitNeighbours(row, col);
@@ -70,18 +71,14 @@ public class Board {
 	}
 
 	private void classicHitNeighbours(int row, int col) {
-
-			getLight(row, col).hitSwitch();
-			if (col - 1 >= 0)
-				getLightLeft(row, col).hitSwitch();
-			if (col + 1 < lights.length)
-				getLightRight(row, col).hitSwitch();
-			if (row - 1 >= 0)
-				getLightUp(row, col).hitSwitch();
-			if (row + 1 < lights.length)
-				getLightDown(row, col).hitSwitch();
-			tries++;
-
+		if (col - 1 >= 0)
+			getLightLeft(row, col).hitSwitch();
+		if (col + 1 < lights.length)
+			getLightRight(row, col).hitSwitch();
+		if (row - 1 >= 0)
+			getLightUp(row, col).hitSwitch();
+		if (row + 1 < lights.length)
+			getLightDown(row, col).hitSwitch();
 	}
 
 	public String toString() {

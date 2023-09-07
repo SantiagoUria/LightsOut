@@ -8,8 +8,6 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import model.Board;
-import model.ClassicBoard;
-import model.VariantBoard;
 
 public interface Utilities {
 	default void setBackground(JPanel panel) {
@@ -32,13 +30,8 @@ public interface Utilities {
 		panel.repaint();
 	}
 
-	default void showGameModeSelectorScreen(JPanel panel, int level, int mode) {
-		Board board;
-		if (mode == 0) {
-			board = new ClassicBoard(level);
-		} else {
-			board = new VariantBoard(level);
-		}
+	default void showGameModeSelectorScreen(JPanel panel, int level, int gameMode) {
+		Board board = new Board(level, gameMode);
 		Game game = new Game(board);
 		game.setSize(800, 600);
 		game.setLocation(0, 0);

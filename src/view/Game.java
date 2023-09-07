@@ -15,34 +15,32 @@ import model.Light;
 
 public class Game extends JPanel implements Utilities {
 	private JPanel panel;
-	private static Color _color_off = new Color(0, 0, 0);
-	private static Color _color_on = new Color(252, 232, 174);
+	private final Color _color_off = new Color(0, 0, 0);
+	private final Color _color_on = new Color(252, 232, 174);
 	private static int xPosition;
 	private static int yPosition;
 	private int size;
-	private int tries;
 	JButton[][] buttons;
 	Board game;
 	Light[][] lights;
 	JLabel triesLabel;
 
 	public Game(Board board) {
-		tries = 0;
 		game = board;
 		size = game.getSize();
 		buttons = new JButton[size][size];
-		lights = board.getLights();
-		initComponents(game);
+		lights = board.getAllLights();
+		initComponents();
 	}
 
-	public void initComponents(Board board) {
+	public void initComponents() {
 		setLayout(null);
 		panel = new JPanel();
 		panel.setBounds(0, 0, 800, 600);
 		add(panel);
 		panel.setLayout(null);
 
-		triesLabel = new JLabel("Tries: " + tries);
+		triesLabel = new JLabel("Tries: " + game.getTries());
 		triesLabel.setFont(new Font("Nirmala UI", Font.BOLD, 20));
 		triesLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		triesLabel.setBackground(new Color(255, 255, 255));
@@ -70,9 +68,8 @@ public class Game extends JPanel implements Utilities {
 							for (int i = 0; i < buttons.length; i++) {
 								for (int j = 0; j < buttons.length; j++) {
 									if (buttons[i][j].equals(button)) {
-										board.switchLightValue(i, j);
-										tries++;
-										board.isCompleted();
+										game.switchLightValue(i, j);
+										game.isCompleted();
 									}
 								}
 							}
@@ -137,14 +134,14 @@ public class Game extends JPanel implements Utilities {
 			for (int j = 0; j < buttons.length; j++) {
 				if (game.getLight(i, j).getState()) {
 					buttons[i][j].setBackground(_color_on);
-					triesLabel.setText("Tries: " + Integer.toString(tries));
+					triesLabel.setText("Tries: " + Integer.toString(game.getTries()));
 				} else {
 					buttons[i][j].setBackground(_color_off);
 				}
 			}
 		}
 		if (game.isCompleted()) {
-			showWinScreen(panel, tries);
+			showWinScreen(panel, game.getTries());
 		}
 	}
 }
