@@ -25,7 +25,6 @@ public class Score extends JPanel implements Utilities {
 		panel.add(topScoresLabel);
 
 		JLabel playerNameLabelOne = new JLabel("{name}");
-		playerNameLabelOne.setForeground(new Color(0, 0, 0));
 		playerNameLabelOne.setHorizontalAlignment(SwingConstants.CENTER);
 		playerNameLabelOne.setFont(new Font("MingLiU-ExtB", Font.BOLD, 24));
 		playerNameLabelOne.setBounds(11, 135, 390, 30);
