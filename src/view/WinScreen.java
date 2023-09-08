@@ -10,7 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-public class WinScreen extends JPanel implements Utilities {
+
+public class WinScreen extends JPanel  {
 	private JTextField playerNameTextField;
 	private JPanel panel;
 	private int tries;
@@ -61,13 +62,13 @@ public class WinScreen extends JPanel implements Utilities {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// envia datos
-				showScoreScreen(panel);
+				Util.showScoreScreen(panel);
 			}
 
 		});
 		panel.add(sendScoreButton);
 
-		setBackground(panel);
+		Util.setBackground(panel);
 
 	}
 

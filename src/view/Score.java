@@ -3,12 +3,11 @@ package view;
 import java.awt.Color;
 import java.awt.Font;
 
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-public class Score extends JPanel implements Utilities {
+public class Score extends JPanel {
 	private JPanel panel;
 
 	public Score() {
@@ -286,7 +285,7 @@ public class Score extends JPanel implements Utilities {
 		playerScoreLabelTenSub.setBounds(399, 504, 390, 30);
 		panel.add(playerScoreLabelTenSub);
 
-		setBackground(panel);
+		Util.setBackground(panel);
 
 	}
 }

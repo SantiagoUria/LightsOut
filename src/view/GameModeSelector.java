@@ -8,10 +8,14 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class GameModeSelector extends JPanel implements Utilities {
+public class GameModeSelector extends JPanel {
 	JPanel panel;
 
 	public GameModeSelector(int size) {
+		initComponents(size);
+	}
+
+	private void initComponents(int size) {
 		setLayout(null);
 		panel = new JPanel();
 		panel.setBounds(0, 0, 800, 600);
@@ -27,7 +31,7 @@ public class GameModeSelector extends JPanel implements Utilities {
 		classicBoardButton.setBounds(239, 288, 90, 30);
 		classicBoardButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				showGameModeSelectorScreen(panel, size, 0);
+				Util.showGameModeSelectorScreen(panel, size, 0);
 			}
 		});
 		panel.add(classicBoardButton);
@@ -36,13 +40,12 @@ public class GameModeSelector extends JPanel implements Utilities {
 		variantBoardButton.setBounds(461, 288, 90, 30);
 		variantBoardButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				showGameModeSelectorScreen(panel, size, 1);
+				Util.showGameModeSelectorScreen(panel, size, 1);
 			}
 		});
 		panel.add(variantBoardButton);
 
-		setBackground(panel);
-
+		Util.setBackground(panel);
 	}
 
 }

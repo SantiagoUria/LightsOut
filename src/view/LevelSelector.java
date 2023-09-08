@@ -8,7 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class LevelSelector extends JPanel implements Utilities {
+public class LevelSelector extends JPanel {
 	private JPanel panel;
 
 	public LevelSelector() {
@@ -31,7 +31,7 @@ public class LevelSelector extends JPanel implements Utilities {
 		JButton btnLevelOne = new JButton("1");
 		btnLevelOne.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				showGameModeSelectorScreen(panel, 3);
+				Util.showGameModeSelectorScreen(panel, 3);
 			}
 		});
 		btnLevelOne.setBounds(239, 288, 70, 70);
@@ -40,7 +40,7 @@ public class LevelSelector extends JPanel implements Utilities {
 		JButton btnLevelTwo = new JButton("2");
 		btnLevelTwo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				showGameModeSelectorScreen(panel, 4);
+				Util.showGameModeSelectorScreen(panel, 4);
 			}
 		});
 		btnLevelTwo.setBounds(349, 288, 70, 70);
@@ -49,14 +49,12 @@ public class LevelSelector extends JPanel implements Utilities {
 		JButton btnLevelThree = new JButton("3");
 		btnLevelThree.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				showGameModeSelectorScreen(panel, 5);
+				Util.showGameModeSelectorScreen(panel, 5);
 			}
 		});
 		btnLevelThree.setBounds(461, 288, 70, 70);
 		panel.add(btnLevelThree);
-		setBackground(panel);
+		Util.setBackground(panel);
 	}
-
-
 
 }

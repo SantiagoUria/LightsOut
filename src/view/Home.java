@@ -11,7 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class Home extends JFrame implements Utilities {
+public class Home extends JFrame {
 
 	private JPanel panel;
 
@@ -43,7 +43,7 @@ public class Home extends JFrame implements Utilities {
 
 		playButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				showLevelSelectorScreen(panel);
+				Util.showLevelSelectorScreen(panel);
 			}
 
 		});
@@ -54,7 +54,7 @@ public class Home extends JFrame implements Utilities {
 		welcomeLabel_1.setBounds(278, 104, 220, 77);
 		panel.add(welcomeLabel_1);
 
-		setBackground(panel);
+		Util.setBackground(panel);
 	}
 
 }

@@ -13,17 +13,17 @@ import javax.swing.SwingConstants;
 import model.Board;
 import model.Light;
 
-public class Game extends JPanel implements Utilities {
+public class Game extends JPanel {
 	private JPanel panel;
 	private final Color _color_off = new Color(0, 0, 0);
 	private final Color _color_on = new Color(252, 232, 174);
 	private static int xPosition;
 	private static int yPosition;
 	private int size;
-	JButton[][] buttons;
-	Board game;
-	Light[][] lights;
-	JLabel triesLabel;
+	private JButton[][] buttons;
+	private Board game;
+	private Light[][] lights;
+	private JLabel triesLabel;
 
 	public Game(Board board) {
 		game = board;
@@ -85,7 +85,7 @@ public class Game extends JPanel implements Utilities {
 			}
 			_add_y(70);
 		}
-		setBackground(panel);
+		Util.setBackground(panel);
 	}
 
 	private void managePositions(int size) {
@@ -141,7 +141,7 @@ public class Game extends JPanel implements Utilities {
 			}
 		}
 		if (game.isCompleted()) {
-			showWinScreen(panel, game.getTries());
+			Util.showWinScreen(panel, game.getTries());
 		}
 	}
 }
