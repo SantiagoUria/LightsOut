@@ -1,5 +1,7 @@
 package view;
 
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,8 +12,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import controller.PlayerScore;
+import controller.ScoreController;
 
-public class WinScreen extends JPanel  {
+public class WinScreen extends JPanel {
 	private JTextField playerNameTextField;
 	private JPanel panel;
 	private int tries;
@@ -54,6 +58,13 @@ public class WinScreen extends JPanel  {
 		panel.add(playerNameTextField);
 		playerNameTextField.setColumns(10);
 
+		JLabel nameValidationLabel = new JLabel("name should be longer!");
+		nameValidationLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		nameValidationLabel.setForeground(new Color(255, 255, 255));
+		nameValidationLabel.setFont(new Font("MingLiU-ExtB", Font.BOLD, 17));
+		nameValidationLabel.setBounds(229, 463, 337, 52);
+		panel.add(nameValidationLabel);
+
 		JButton sendScoreButton = new JButton("Send");
 		sendScoreButton.setFont(new Font("MingLiU-ExtB", Font.BOLD, 20));
 		sendScoreButton.setBounds(350, 391, 100, 40);
@@ -62,13 +73,19 @@ public class WinScreen extends JPanel  {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// envia datos
-				Util.showScoreScreen(panel);
+				if (playerNameTextField.getText().length() < 3) {
+					nameValidationLabel.setForeground(new Color(255,50,0));
+				} else {
+					PlayerScore score = new PlayerScore(playerNameTextField.getText(), tries);
+					ScoreController scoreC = new ScoreController();
+					scoreC.addScore(score);
+					Util.showScoreScreen(panel);
+				}
 			}
 
 		});
-		panel.add(sendScoreButton);
 
-		Util.setBackground(panel);
+		panel.add(sendScoreButton);
 
 	}
 

@@ -13,7 +13,7 @@ import javax.swing.border.EmptyBorder;
 
 public class Home extends JFrame {
 
-	private JPanel panel;
+	public JPanel panel;
 
 	public Home() {
 		initComponents();

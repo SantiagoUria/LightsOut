@@ -3,6 +3,9 @@ package model;
 import java.security.InvalidParameterException;
 import java.util.Random;
 
+import controller.ScoreController;
+import controller.Score;
+
 public class Board {
 	protected Light[][] lights;
 	protected int tries = 0;
@@ -10,11 +13,13 @@ public class Board {
 	private int gameMode;
 	private final int CLASSIC_MODE = 0;
 	private final int VARIANT_MODE = 1;
+	private Score scores;
 
 	public Board(int size, int gameMode) {
 		this.size = size;
 		lights = new Light[size][size];
 		this.gameMode = gameMode;
+		ScoreController.generateJSON();
 		initializeBoard();
 	}
 
