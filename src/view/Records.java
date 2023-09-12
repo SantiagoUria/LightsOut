@@ -63,7 +63,7 @@ public class Records extends JPanel {
 			panel.add(playerScoreLabelOneSub);
 
 			JLabel firstPlaceImg = new JLabel("");
-			String path = "scr/view/medal1.png";
+			String path = "scr/view/img/medal1.png";
 			firstPlaceImg.setIcon(new ImageIcon(path));
 			firstPlaceImg.setBounds(50, 135, 20, 32);
 			panel.add(firstPlaceImg);
@@ -98,7 +98,7 @@ public class Records extends JPanel {
 			panel.add(playerScoreLabelTwoSub);
 
 			JLabel secondPlaceImg = new JLabel("");
-			String path = "src/view/medal2.png";
+			String path = "src/view/img/medal2.png";
 			secondPlaceImg.setIcon(new ImageIcon(path));
 			secondPlaceImg.setBounds(50, 175, 20, 32);
 			panel.add(secondPlaceImg);
@@ -132,7 +132,7 @@ public class Records extends JPanel {
 			panel.add(playerScoreLabelThreeSub);
 			
 			JLabel thirdPlaceImg = new JLabel("");
-			String path = "scr/view/medal3.png";
+			String path = "scr/view/img/medal3.png";
 			thirdPlaceImg.setIcon(new ImageIcon(path));
 			thirdPlaceImg.setBounds(50, 215, 20, 32);
 			panel.add(thirdPlaceImg);

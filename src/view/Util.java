@@ -13,7 +13,7 @@ public final class Util {
 
 	public static void setBackground(JPanel panel) {
 		JLabel background;
-		String path = "src/view/background.jpg";
+		String path = "src/view/img/background.jpg";
 		ImageIcon img = new ImageIcon(path);
 		background = new JLabel("", img, SwingConstants.TRAILING);
 		background.setVerticalAlignment(SwingConstants.BOTTOM);
