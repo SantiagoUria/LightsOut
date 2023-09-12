@@ -21,31 +21,6 @@ public final class Util {
 		panel.add(background);
 	}
 
-	public static void setFirstPlaceImg(JPanel panel) {
-		JLabel firstPlaceImg = new JLabel("");
-		firstPlaceImg.setIcon(new ImageIcon("/view/medal1.png"));
-		firstPlaceImg.setBounds(70, 100, 20, 32);
-		panel.add(firstPlaceImg);
-	}
-
-	public static void getSecondPlaceImg(JPanel panel) {
-		JLabel secondPlaceImg;
-		String path = "src/view/medal1.png";
-		ImageIcon img = new ImageIcon(path);
-		secondPlaceImg = new JLabel("", img, SwingConstants.TRAILING);
-		secondPlaceImg.setVerticalAlignment(SwingConstants.BOTTOM);
-		secondPlaceImg.setBounds(10, 11, 20, 32);
-	}
-
-	public static void getThirdPlaceImg(JPanel panel) {
-		JLabel thirdPlaceImg;
-		String path = "/view/medal1.png";
-		ImageIcon img = new ImageIcon(path);
-		thirdPlaceImg = new JLabel("", img, SwingConstants.TRAILING);
-		thirdPlaceImg.setVerticalAlignment(SwingConstants.BOTTOM);
-		thirdPlaceImg.setBounds(10, 11, 20, 32);
-	}
-
 	public static void showWinScreen(JPanel panel, int tries) {
 		WinScreen winScreen = new WinScreen(tries);
 		panel.removeAll();

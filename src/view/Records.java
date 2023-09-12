@@ -3,6 +3,7 @@ package view;
 import java.awt.Color;
 import java.awt.Font;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -60,6 +61,13 @@ public class Records extends JPanel {
 			playerScoreLabelOneSub.setBounds(399, 137, 390, 30);
 			playerScoreLabelOneSub.setForeground(new Color(255, 255, 255));
 			panel.add(playerScoreLabelOneSub);
+
+			JLabel firstPlaceImg = new JLabel("");
+			String path = "scr/view/medal1.png";
+			firstPlaceImg.setIcon(new ImageIcon(path));
+			firstPlaceImg.setBounds(50, 135, 20, 32);
+			panel.add(firstPlaceImg);
+
 		}
 		if (scores[1] != null) {
 
@@ -88,6 +96,12 @@ public class Records extends JPanel {
 			playerScoreLabelTwoSub.setBounds(399, 176, 390, 30);
 			playerScoreLabelTwoSub.setForeground(new Color(255, 255, 255));
 			panel.add(playerScoreLabelTwoSub);
+
+			JLabel secondPlaceImg = new JLabel("");
+			String path = "src/view/medal2.png";
+			secondPlaceImg.setIcon(new ImageIcon(path));
+			secondPlaceImg.setBounds(50, 175, 20, 32);
+			panel.add(secondPlaceImg);
 		}
 		if (scores[2] != null) {
 
@@ -116,10 +130,15 @@ public class Records extends JPanel {
 			playerScoreLabelThreeSub.setFont(new Font("MingLiU-ExtB", Font.BOLD, 24));
 			playerScoreLabelThreeSub.setBounds(399, 217, 390, 30);
 			panel.add(playerScoreLabelThreeSub);
+			
+			JLabel thirdPlaceImg = new JLabel("");
+			String path = "scr/view/medal3.png";
+			thirdPlaceImg.setIcon(new ImageIcon(path));
+			thirdPlaceImg.setBounds(50, 215, 20, 32);
+			panel.add(thirdPlaceImg);
 		}
 
-//		Util.setBackground(panel);
-		Util.setFirstPlaceImg(panel);
+		Util.setBackground(panel);
 
 	}
 }
